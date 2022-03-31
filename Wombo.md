@@ -37,3 +37,11 @@ if __name__ == "__main__":
     args = parser.parse_args()
     run(args.host, args.port, args.wordlist, args.prefix)
 ```
+
+I tried to write a php webshell to the webroot of the server running on port 80, but visiting the path just triggered a download.
+
+### Foothold
+
+Searching the version of redis that is running (`5.0.9`), there's an [unauthenticated RCE vulnerability](https://github.com/Ridter/redis-rce) (the exploit also requires a `.so` file which can be found in [this repo](https://github.com/n0b0dyCN/redis-rogue-server)) for versions 4.x/5.x. See [this article](https://medium.com/@knownsec404team/rce-exploits-of-redis-based-on-master-slave-replication-ef7a664ce1d0) for an explanation of the exploit.
+
+We can get a reverse shell using this exploit. Note that we're only able to use ports that are open on the target (e.g. when making requests to the kali box, we can only make requests to kali machine ports 22, 80, 6379, 8080, 27017).
