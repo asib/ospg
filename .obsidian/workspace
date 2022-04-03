@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Wombo.md",
+            "file": "Chatty.md",
             "mode": "source",
             "source": false
           }
@@ -22,7 +22,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Wombo.md",
+            "file": "Chatty.md",
             "mode": "preview",
             "source": false
           }
@@ -54,7 +54,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "mail from",
+                "query": "snmp",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -83,7 +83,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Wombo.md",
+                "file": "Chatty.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,15 +103,15 @@
   },
   "active": "1e7e00a219ea219c",
   "lastOpenFiles": [
+    "Chatty.md",
     "Wombo.md",
-    "ClamAV.md",
-    "WebCal.md",
-    "Hawat.md",
+    "VoIP.md",
+    "Fail.md",
+    "Muddy.md",
     "Twiggy.md",
-    "Command Injection.md",
-    "Interface.md",
-    "CyberSploit1.md",
-    "Ha-natraj.md",
-    "PyExp.md"
+    "Hawat.md",
+    "Potato.md",
+    "Gaara.md",
+    "Ha-natraj.md"
   ]
 }
