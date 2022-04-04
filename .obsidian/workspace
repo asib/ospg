@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Chatty.md",
+            "file": "Snookums.md",
             "mode": "source",
             "source": false
           }
@@ -22,7 +22,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Chatty.md",
+            "file": "Snookums.md",
             "mode": "preview",
             "source": false
           }
@@ -83,7 +83,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Chatty.md",
+                "file": "Snookums.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,6 +103,7 @@
   },
   "active": "1e7e00a219ea219c",
   "lastOpenFiles": [
+    "Snookums.md",
     "Chatty.md",
     "Snookums.md",
     "Wombo.md",
@@ -112,7 +113,6 @@
     "Twiggy.md",
     "Hawat.md",
     "Potato.md",
-    "Gaara.md",
-    "Ha-natraj.md"
+    "Gaara.md"
   ]
 }
