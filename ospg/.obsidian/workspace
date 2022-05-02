@@ -1,0 +1,118 @@
+{
+  "main": {
+    "id": "e110e3819e28262a",
+    "type": "split",
+    "children": [
+      {
+        "id": "1e7e00a219ea219c",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "Snookums.md",
+            "mode": "source",
+            "source": false
+          }
+        },
+        "group": "689ba71ee4758b5f"
+      },
+      {
+        "id": "c73f421cc9bdedd3",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "Snookums.md",
+            "mode": "preview",
+            "source": false
+          }
+        },
+        "group": "689ba71ee4758b5f"
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "37d04e186a883b28",
+    "type": "split",
+    "children": [
+      {
+        "id": "30baf90e7afa5414",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e6769654980012c5",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "2bdff1c7d37c443b",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "snmp",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "e2c57258ed049549",
+    "type": "split",
+    "children": [
+      {
+        "id": "6b7144292c659dce",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "59cc01c1890d24f4",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Snookums.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "1e7e00a219ea219c",
+  "lastOpenFiles": [
+    "Snookums.md",
+    "Chatty.md",
+    "Snookums.md",
+    "Wombo.md",
+    "VoIP.md",
+    "Fail.md",
+    "Muddy.md",
+    "Twiggy.md",
+    "Hawat.md",
+    "Potato.md",
+    "Gaara.md"
+  ]
+}
