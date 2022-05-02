@@ -1,0 +1,94 @@
+{
+  "main": {
+    "id": "7b824ce97873c7c9",
+    "type": "split",
+    "children": [
+      {
+        "id": "edd63e40724d4530",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "thm/Attacktive Directory.md",
+            "mode": "source",
+            "source": false
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "3ee8a3e5c8cd8243",
+    "type": "split",
+    "children": [
+      {
+        "id": "4970e99f52920b86",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "becc2d9b77ef99ff",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "8247615d5330211f",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "972351d2e61b4df5",
+    "type": "split",
+    "children": [
+      {
+        "id": "b15ec9318e2d7c21",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "de7fe1b53a32105a",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "thm/Attacktive Directory.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "edd63e40724d4530",
+  "lastOpenFiles": [
+    "thm/Attacktive Directory.md"
+  ]
+}
