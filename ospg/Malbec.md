@@ -115,7 +115,7 @@ We can use the above sequence of two commands to move execution to the stack. If
 
 The exploit is below.
 
-```
+```python
 import sys
 import socket
 import struct
@@ -232,7 +232,7 @@ So if we put a file called `libmalbec.so` in `/home/carlos`, we can hijack the `
 
 Using `nm -D /usr/bin/messenger`, we see a function `malbec`. Analyzing with Ghidra, we confirm that `malbec` is a function and Ghidra cannot find a definition (because it's supposed to be coming from `libmalbec.so`). We can create a malicious library. First, we create a file `libmalbec.c`:
 
-```
+```c
 #include <stdio.h>
 #include <unistd.h>
 #include <sys/types.h>
