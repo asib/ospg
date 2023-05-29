@@ -201,4 +201,4 @@ Global Group memberships     *Web Admins           *Domain Users
 The command completed successfully.
 ```
 
-We can see we're not a member of `Administrators`. We can now grab the root flag.
+We can see we're now a member of `Administrators`. We can now grab the root flag.
